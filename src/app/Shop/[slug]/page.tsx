@@ -7,8 +7,21 @@ import { RxLinkedinLogo } from "react-icons/rx";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
 import Link from "next/link";
+import { Product } from "../../../../types/products";
+import { getProductBySlug } from "@/lib/FetchDataFromSanity";
+import { urlFor } from "@/sanity/lib/image";
 
-const Details = () => {
+
+async function ProductDetailPage  ({ params }: { params: { slug: string } }) {
+  const product: Product | null = await getProductBySlug(params.slug);
+
+  if (!product) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-lg text-muted-foreground">Product not found.</p>
+      </div>
+    );
+  }
   return (
     <div className="max-w-[1440px] h-auto lg:h-[820px] mx-auto px-4 lg:px-0">
       <div className="max-w-[1241.01px] h-auto lg:h-[730.87px] m-auto mt-11 bg-white flex flex-col lg:flex-row lg:justify-between">
@@ -34,9 +47,9 @@ const Details = () => {
 
           {/* Main Image */}
           <div className="w-full lg:w-[481px] flex justify-center bg-white">
-            <div className="w-[90%] lg:w-[423px] h-[300px] lg:h-[500px] bg-[#FFF9E5] rounded-md relative">
+            <div className="w-[90%] lg:w-[423px] h-[300px] lg:h-[500px]  rounded-md relative">
               <Image
-                src="/pic8.png"
+                src={urlFor(product.image).url()}
                 alt="Sofa"
                 layout="fill"
                 objectFit="contain"
@@ -50,8 +63,8 @@ const Details = () => {
         <div className="w-full lg:w-[606.01px] h-auto lg:h-[730.87px] mt-8 lg:mt-0">
           {/* Title and Price */}
           <div>
-            <h1 className="text-[24px] lg:text-[42px]">Asgaard sofa</h1>
-            <h2 className="text-[18px] lg:text-[24px]">Rs. 250,000.00</h2>
+            <h1 className="text-[24px] lg:text-[42px]">{product.name}</h1>
+            <h2 className="text-[18px] lg:text-[24px]">{product.price}</h2>
           </div>
 
           {/* Rating */}
@@ -76,10 +89,7 @@ const Details = () => {
           {/* Description */}
           <div>
             <p className="text-[13px] mt-4 text-justify">
-              Setting the bar as one of the loudest speakers in its class, the
-              Kilburn is a compact, stout-hearted hero with a well-balanced
-              audio which boasts a clear midrange and extended highs for a
-              sound.
+            {product.description}
             </p>
           </div>
 
@@ -162,4 +172,6 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default ProductDetailPage;
+
+

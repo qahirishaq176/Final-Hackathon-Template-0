@@ -17,3 +17,15 @@ export async function getProducts() {
     }
   }
   
+  export async function getProductBySlug(slug : string) {
+    try {
+      const product = await client.fetch(
+        `*[_type == "product" && slug.current == $slug][0]`,
+        { slug }
+      );
+      return product;
+    } catch (error) {
+      console.error("Error fetching product:", error);
+      return null;
+    }
+  }
