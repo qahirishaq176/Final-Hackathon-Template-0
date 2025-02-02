@@ -6,6 +6,7 @@ import { client } from "@/sanity/lib/client";
 import { twenty } from "@/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
+import Image from "next/image";
 
 const Page = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -58,9 +59,11 @@ const Page = () => {
             >
               <Link href={`/Shop/${product.slug.current}`}>
                 {product.image && (
-                  <img
+                  <Image
                     src={urlFor(product.image).url()}
                     alt={product.name}
+                    width={300}
+                    height={300}
                     className="w-full h-48 object-cover"
                   />
                 )}

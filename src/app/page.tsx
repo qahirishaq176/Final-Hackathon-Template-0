@@ -12,32 +12,32 @@ import ContactToInsta from "./Components/ContactToInsta";
 
 async function Home() {
   const productsData: Product[] = await getProducts();
-  const products = [
-    {
-      id: 1,
-      name: "Trenton modular sofa_3",
-      price: "Rs. 25,000.00",
-      image: "/pic4.png",
-    },
-    {
-      id: 2,
-      name: "Granite dining table with dining chair",
-      price: "Rs. 25,000.00",
-      image: "/pic5.png",
-    },
-    {
-      id: 3,
-      name: "Outdoor bar table and stool",
-      price: "Rs. 25,000.00",
-      image: "/pic6.png",
-    },
-    {
-      id: 4,
-      name: "Plain console with teak mirror",
-      price: "Rs. 25,000.00",
-      image: "/pic7.png",
-    },
-  ];
+  // const products = [
+  //   {
+  //     id: 1,
+  //     name: "Trenton modular sofa_3",
+  //     price: "Rs. 25,000.00",
+  //     image: "/pic4.png",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Granite dining table with dining chair",
+  //     price: "Rs. 25,000.00",
+  //     image: "/pic5.png",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Outdoor bar table and stool",
+  //     price: "Rs. 25,000.00",
+  //     image: "/pic6.png",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Plain console with teak mirror",
+  //     price: "Rs. 25,000.00",
+  //     image: "/pic7.png",
+  //   },
+  // ];
   const products2 = [
     {
       id: 5,

@@ -1,19 +1,34 @@
 import React from "react";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa6";
-import { FaStarHalf } from "react-icons/fa";
+import { FaStar, FaStarHalf } from "react-icons/fa";
 import { MdFacebook } from "react-icons/md";
 import { RxLinkedinLogo } from "react-icons/rx";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
 import Link from "next/link";
-import { Product } from "../../../../types/products";
+// import { Product } from "../../../../types/products";
 import { getProductBySlug } from "@/lib/FetchDataFromSanity";
 import { urlFor } from "@/sanity/lib/image";
+import { Metadata } from 'next';
 
+type Props = {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-async function ProductDetailPage  ({ params }: { params: { slug: string } }) {
-  const product: Product | null = await getProductBySlug(params.slug);
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+  const product = await getProductBySlug(params.slug);
+  
+  return {
+    title: product?.name || 'Product Not Found',
+    description: product?.description || 'Product details page',
+  };
+}
+
+async function ProductDetailPage({ params }: Props) {
+  const product = await getProductBySlug(params.slug);
 
   if (!product) {
     return (
@@ -22,6 +37,7 @@ async function ProductDetailPage  ({ params }: { params: { slug: string } }) {
       </div>
     );
   }
+
   return (
     <div className="max-w-[1440px] h-auto lg:h-[820px] mx-auto px-4 lg:px-0">
       <div className="max-w-[1241.01px] h-auto lg:h-[730.87px] m-auto mt-11 bg-white flex flex-col lg:flex-row lg:justify-between">
