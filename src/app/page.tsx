@@ -1,16 +1,24 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import React from "react";
 import Hero  from '@/app/Components/Hero'
 import Sectiontwo from '@/app/Components/Sectiontwo'
 import Sectionfive from '@/app/Components/Sectionfive'
 import Link from 'next/link'
+import { getProducts } from "@/lib/FetchDataFromSanity";
+import { urlFor } from "@/sanity/lib/image";
 
-const Home = () => {
-
-
-
+interface Product {
+  id: string;
+  name: string;
+  price: string;
+  image: any;
+}
+async function  Home ()  {
+  
+const productsData = await getProducts();
   const products = [
+    
     {
       id: 1,
       name: "Trenton modular sofa_3",
@@ -61,9 +69,6 @@ const Home = () => {
     <div>
       <Hero/>
       <Sectiontwo/>
-     
-
-    
 
      {/* Top Picks Section */}
 <div className="max-w-[1440px] min-h-[800px] ">
@@ -82,13 +87,13 @@ const Home = () => {
   <div>
     <div className="flex justify-center">
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 px-4 sm:px-6">
-        {products.map((product) => (
+        {productsData.map((product: Product) => (
           <div
             key={product.id}
             className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
           >
             <Image
-              src={product.image}
+              src={urlFor( product.image).url()}
               alt={product.name}
               width={300}
               height={300}
