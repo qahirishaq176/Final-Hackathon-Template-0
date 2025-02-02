@@ -69,6 +69,7 @@ const Footer = () => {
               <p className="font-[400] text-[16px] leading-[24px] text-black mt-8">
                 2022 Meubel House. All rights reverved
               </p>
+              <Link href='https://github.com/qahirishaq176' target="_blank">Made by <span className=" hover:underline text-[#9F9F9F]">Qahir Ishaq</span></Link>
             </div>
           </div>
         </div>

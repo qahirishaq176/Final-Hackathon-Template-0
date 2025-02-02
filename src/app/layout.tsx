@@ -6,6 +6,7 @@ const pop = Poppins({ subsets: ['latin'],
 });
 import './globals.css'
 import Footer from './Components/Footer';
+import AboveFooter from './Components/AboveFooter';
 
 
 export const metadata: Metadata = {
@@ -20,9 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={pop.className}>
+      <body className={`${pop.className} max-w-[1440px] mx-auto`}>
       <Navbar />
       {children}
+      <AboveFooter />
       <Footer />
       </body>
     </html>

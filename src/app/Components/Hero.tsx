@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="bg-[#FBEBB5]">
+    <div className="bg-[#FBEBB5] max-w-[1440px]">
       {/* Container */}
       <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center sm:justify-between py-8 px-4 sm:px-16 lg:px-32">
         {/* Text Section */}

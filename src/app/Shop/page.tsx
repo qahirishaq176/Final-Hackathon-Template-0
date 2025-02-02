@@ -50,7 +50,7 @@ const Page = () => {
         <h1 className="text-[36px] sm:text-[40px] md:text-[48px] font-semibold text-center">
           Our Latest Products
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:p-6 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:p-6 mt-20 md:mt-10 lg:mt-5">
           {products.map((product) => (
             <div
               key={product.slug.current} // Use `_id` instead of `id` if that's what Sanity uses
