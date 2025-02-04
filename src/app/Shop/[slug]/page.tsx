@@ -6,28 +6,28 @@ import { RxLinkedinLogo } from "react-icons/rx";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
 import Link from "next/link";
-// import { Product } from "../../../../types/products";
 import { getProductBySlug } from "@/lib/FetchDataFromSanity";
 import { urlFor } from "@/sanity/lib/image";
 import { Metadata } from 'next';
 
-type Props = {
+
+type PageProps = {
   params: { slug: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata> {
-  const product = await getProductBySlug(params.slug);
-  
+// ✅ Fix: Await `params` before accessing `slug`
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params; // Await params
+  const product = await getProductBySlug(resolvedParams.slug); // Now safe to access
+
   return {
     title: product?.name || 'Product Not Found',
     description: product?.description || 'Product details page',
   };
 }
 
-async function ProductDetailPage({ params }: Props) {
+async function ProductDetailPage({ params }: PageProps) {
   const product = await getProductBySlug(params.slug);
 
   if (!product) {
@@ -80,7 +80,7 @@ async function ProductDetailPage({ params }: Props) {
           {/* Title and Price */}
           <div>
             <h1 className="text-[24px] lg:text-[42px]">{product.name}</h1>
-            <h2 className="text-[18px] lg:text-[24px]">{product.price}</h2>
+            <h2 className="text-[18px] lg:text-[24px]">$&nbsp;{product.price}</h2>
           </div>
 
           {/* Rating */}
@@ -105,7 +105,7 @@ async function ProductDetailPage({ params }: Props) {
           {/* Description */}
           <div>
             <p className="text-[13px] mt-4 text-justify">
-            {product.description}
+              {product.description}
             </p>
           </div>
 
@@ -116,9 +116,8 @@ async function ProductDetailPage({ params }: Props) {
               {["L", "XL", "XS"].map((size, idx) => (
                 <div
                   key={idx}
-                  className={`w-[30px] h-[30px] flex items-center justify-center rounded-md ${
-                    idx === 0 ? "bg-[#FBEBB5]" : "bg-[#FAF4F4]"
-                  }`}
+                  className={`w-[30px] h-[30px] flex items-center justify-center rounded-md ${idx === 0 ? "bg-[#FBEBB5]" : "bg-[#FAF4F4]"
+                    }`}
                 >
                   {size}
                 </div>

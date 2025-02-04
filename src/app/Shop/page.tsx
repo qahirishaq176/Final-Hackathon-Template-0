@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import AboveFooter from "../Components/AboveFooter";
 import { Product } from "../../../types/products";
 import { client } from "@/sanity/lib/client";
 import { twenty } from "@/lib/queries";
@@ -48,7 +47,7 @@ const Page = () => {
   return (
     <>
       <div className="p-6">
-        <h1 className="text-[36px] sm:text-[40px] md:text-[48px] font-semibold text-center">
+        <h1 className="text-[36px] sm:text-[40px] md:text-[48px] font-semibold text-center py-20">
           Our Latest Products
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:p-6 mt-20 md:mt-10 lg:mt-5">
@@ -64,11 +63,11 @@ const Page = () => {
                     alt={product.name}
                     width={300}
                     height={300}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-contain"
                   />
                 )}
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-medium text-gray-900 line-clamp-1">
                     {product.name}
                   </h3>
                   <p className="text-gray-600 mt-2">
@@ -80,7 +79,6 @@ const Page = () => {
           ))}
         </div>
       </div>
-      <AboveFooter />
     </>
   );
 };

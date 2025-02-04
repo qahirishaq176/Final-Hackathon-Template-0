@@ -1,5 +1,5 @@
 "use client";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import { RiAccountCircleLine } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
@@ -23,22 +23,20 @@ const Navbar = () => {
         <TiThMenu />
       </button>
 
-      <div className="absolute left-1/2 transform -translate-x-1/2 sm:static sm:translate-x-0">
-    <Logo />
-  </div>
+      <Link href='/' className="absolute left-1/2 transform -translate-x-1/2 sm:static sm:translate-x-0">
+        <Logo />
+      </Link>
       {/* Navigation Links */}
       <div
-        className={`absolute sm:static top-20 right-0 w-full sm:w-auto bg-[#FBEBB5] sm:flex sm:items-center sm:space-x-8 text-black text-lg font-medium z-50 transition-all duration-300 ease-in-out ${
-          isOpen ? "block" : "hidden"
-        }`}
+        className={`absolute sm:static top-20 right-0 w-full sm:w-auto bg-[#FBEBB5] sm:flex sm:items-center sm:space-x-8 text-black text-lg font-medium z-50 transition-all duration-300 ease-in-out ${isOpen ? "block" : "hidden"
+          }`}
       >
         {["/", "/Shop", "/About", "/Contact"].map((path) => (
           <Link
             key={path}
             href={path}
-            className={`relative px-4 py-2 transition-all duration-200 hover:text-[#B88E2F] ${
-              pathname === path ? "text-[#B88E2F] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-[#B88E2F]" : ""
-            }`}
+            className={`relative px-4 py-2 transition-all duration-200 hover:text-[#B88E2F] ${pathname === path ? "text-[#B88E2F] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-[#B88E2F]" : ""
+              }`}
           >
             {path.replace("/", "") || "Home"}
           </Link>

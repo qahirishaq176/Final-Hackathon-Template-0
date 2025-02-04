@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { FaChevronRight } from "react-icons/fa6";
-import AboveFooter from "../Components/AboveFooter";
 
 const CheckoutPage = () => {
   return (
@@ -251,7 +250,7 @@ const CheckoutPage = () => {
         </div>
       </div>
 
-      <AboveFooter />
+   
     </>
   );
 };

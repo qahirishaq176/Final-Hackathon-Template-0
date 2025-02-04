@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaChevronRight } from "react-icons/fa6";
-import AboveFooter from "../Components/AboveFooter";
+
 
 const AccountPage = () => {
   return (
@@ -119,8 +119,6 @@ const AccountPage = () => {
           </div>
         </div>
       </section>
-
-      <AboveFooter />
     </>
   );
 };
