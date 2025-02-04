@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
-import { hostname } from "os";
 
-const nextConfig: NextConfig = {
+
+
+const nextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
