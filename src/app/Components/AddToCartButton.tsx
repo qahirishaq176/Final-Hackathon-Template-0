@@ -21,7 +21,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
 
     // ✅ Show success toast
     toast.success(`${product.name} added to cart!`, {
-      position: "top-right",
+      position: "bottom-right",
       duration: 3000,
       style: {
         background: "#333",

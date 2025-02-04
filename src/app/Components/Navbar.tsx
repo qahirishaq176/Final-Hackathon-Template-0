@@ -17,7 +17,7 @@ const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const pathname = usePathname();
   const [clientTotal, setClientTotal] = useState(0);
-  const { items, totalPrice, getQuantity , removeItem } = useCartStore();
+  const { items, totalPrice, getQuantity, removeItem } = useCartStore();
 
   useEffect(() => {
     setClientTotal(totalPrice()); // Set the correct price after mounting
@@ -58,16 +58,24 @@ const Navbar = () => {
       </div>
 
       {/* Icons Section */}
-      <div className="flex items-center space-x-6 text-2xl">
+      <div className="flex items-center space-x-6 text-2xl ">
         <Link href="/Accounts">
           <RiAccountCircleLine className="cursor-pointer hover:text-[#B88E2F]" />
         </Link>
         <FiSearch className="cursor-pointer hover:text-[#B88E2F]" />
         <FaRegHeart className="cursor-pointer hover:text-[#B88E2F]" />
-        <IoCartOutline
-          className="cursor-pointer hover:text-[#B88E2F]"
-          onClick={() => setCartOpen(!cartOpen)}
-        />
+        <div className="relative">
+          <IoCartOutline
+            className="cursor-pointer hover:text-[#B88E2F]"
+            onClick={() => setCartOpen(!cartOpen)}
+          />
+
+          {items.length > 0 && (
+            <span className="absolute top-0 right-0 bg-[#B88E2F] text-white text-xs sm:text-sm font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center transform translate-x-2 -translate-y-1 sm:translate-x-3 sm:-translate-y-2">
+              {items.length}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Shopping Cart Sidebar */}
@@ -83,7 +91,10 @@ const Navbar = () => {
 
         <div className="mt-5 space-y-4">
           {items.map((item) => (
-            <div key={item._id} className="flex items-center space-x-4 border-b pb-4">
+            <div
+              key={item._id}
+              className="flex items-center space-x-4 border-b pb-4"
+            >
               <div className="w-20 h-20 flex justify-center items-center rounded-lg">
                 <Image
                   src={urlFor(item.imageUrl).url() || "/"}
@@ -97,7 +108,12 @@ const Navbar = () => {
                 <h3 className="text-sm font-bold">{item.name}</h3>
                 <div className="flex justify-between text-sm mt-1">
                   <span> {`${getQuantity(item._id)} × $${item.price}`}</span>
-                  <button onClick={() => removeItem(item._id)} className="text-red-600">&times;</button>
+                  <button
+                    onClick={() => removeItem(item._id)}
+                    className="text-red-600"
+                  >
+                    &times;
+                  </button>
                 </div>
               </div>
             </div>
