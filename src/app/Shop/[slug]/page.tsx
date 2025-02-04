@@ -5,25 +5,24 @@ import { MdFacebook } from "react-icons/md";
 import { RxLinkedinLogo } from "react-icons/rx";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
-import Link from "next/link";
+
 // import { Product } from "../../../../types/products";
 import { getProductBySlug } from "@/lib/FetchDataFromSanity";
 import { urlFor } from "@/sanity/lib/image";
-import { Metadata } from 'next';
+import { Metadata } from "next";
+import AddToCartButton from "@/app/Components/AddToCartButton";
 
 type Props = {
   params: { slug: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = await getProductBySlug(params.slug);
-  
+
   return {
-    title: product?.name || 'Product Not Found',
-    description: product?.description || 'Product details page',
+    title: product?.name || "Product Not Found",
+    description: product?.description || "Product details page",
   };
 }
 
@@ -80,7 +79,7 @@ async function ProductDetailPage({ params }: Props) {
           {/* Title and Price */}
           <div>
             <h1 className="text-[24px] lg:text-[42px]">{product.name}</h1>
-            <h2 className="text-[18px] lg:text-[24px]">{product.price}</h2>
+            <h2 className="text-[18px] lg:text-[24px]">${product.price}</h2>
           </div>
 
           {/* Rating */}
@@ -105,7 +104,7 @@ async function ProductDetailPage({ params }: Props) {
           {/* Description */}
           <div>
             <p className="text-[13px] mt-4 text-justify">
-            {product.description}
+              {product.description}
             </p>
           </div>
 
@@ -142,14 +141,12 @@ async function ProductDetailPage({ params }: Props) {
 
           {/* Add to Cart */}
           <div className="flex flex-col sm:flex-row mt-8 gap-4 sm:gap-10">
-            <button className="flex flex-row px-6 py-4 rounded-xl border-[1px] border-[#9F9F9F] gap-6 text-[16px]">
+            {/* <button className="flex flex-row px-6 py-4 rounded-xl border-[1px] border-[#9F9F9F] gap-6 text-[16px]">
               <p>-</p>
               <p>1</p>
               <p>+</p>
-            </button>
-            <Link href={"/Cart"} className="px-10 py-4 rounded-xl border-[1px] border-black">
-              Add To Cart
-            </Link>
+            </button> */}
+            <AddToCartButton product={product} />
           </div>
 
           {/* Divider */}
@@ -186,8 +183,6 @@ async function ProductDetailPage({ params }: Props) {
       </div>
     </div>
   );
-};
+}
 
 export default ProductDetailPage;
-
-

@@ -6,7 +6,7 @@ const pop = Poppins({ subsets: ['latin'],
 });
 import './globals.css'
 import Footer from './Components/Footer';
-import AboveFooter from './Components/AboveFooter';
+import { Toaster } from 'react-hot-toast';
 
 
 export const metadata: Metadata = {
@@ -21,10 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      </head>
       <body className={`${pop.className} max-w-[1440px] mx-auto`}>
       <Navbar />
+      <Toaster />
       {children}
-      <AboveFooter />
+     
       <Footer />
       </body>
     </html>
