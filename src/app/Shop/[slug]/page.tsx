@@ -11,6 +11,7 @@ import { getProductBySlug } from "@/lib/FetchDataFromSanity";
 import { urlFor } from "@/sanity/lib/image";
 import { Metadata } from "next";
 import AddToCartButton from "@/app/Components/AddToCartButton";
+import { Product } from "../../../../types/products";
 
 type Props = {
   params: { slug: string };
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 async function ProductDetailPage({ params }: Props) {
-  const product = await getProductBySlug(params.slug);
+  const product: Product = await getProductBySlug(params.slug);
 
   if (!product) {
     return (
@@ -64,7 +65,7 @@ async function ProductDetailPage({ params }: Props) {
           <div className="w-full lg:w-[481px] flex justify-center bg-white">
             <div className="w-[90%] lg:w-[423px] h-[300px] lg:h-[500px]  rounded-md relative">
               <Image
-                src={urlFor(product.image).url()}
+                src={urlFor(product.imageUrl).url()}
                 alt="Sofa"
                 layout="fill"
                 objectFit="contain"

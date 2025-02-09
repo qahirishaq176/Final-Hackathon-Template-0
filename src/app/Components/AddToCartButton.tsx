@@ -12,10 +12,10 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
 
   const handleAddToCart = () => {
     addItem({
-      _id: product.id, // Mapping `id` to `_id`
+      _id: product._id, // Mapping `id` to `_id`
       name: product.name,
       price: product.price,
-      imageUrl: product.image, // Mapping `image` to `imageUrl`
+      imageUrl: product.imageUrl, // Mapping `image` to `imageUrl`
       quantity: 1,
     });
 

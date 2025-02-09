@@ -1,15 +1,14 @@
-
-
-
 export interface Product {
-    id: string; // Product ka unique ID
-    name: string; // Product ka naam
-    price: number; // Product ki price
-    image: string; // Product ka image URL
-    description: string; // Product ka description
-    slug: {
-      _type: 'slug';
-      current: string;
-    };
-  }
-  
+  _id: string; // Unique Product ID
+  name: string; // Product name
+  price: number; // Product price
+  discountPercentage?: number; // Optional discount percentage
+  stockLevel: number; // Stock availability
+  category: string; // Product category
+  description: string; // Product description
+  slug: {
+    _type: "slug";
+    current: string;
+  };
+  imageUrl: string; // Product image URL from Sanity
+}

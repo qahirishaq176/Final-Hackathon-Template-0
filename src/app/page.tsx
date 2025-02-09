@@ -81,10 +81,10 @@ async function Home() {
         <div className="flex flex-col justify-center">
           <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 px-4 sm:px-6">
             {productsData.map((product: Product) => (
-              <Link href={`/Shop/${product.slug.current}`} key={product.id}>
+              <Link href={`/Shop/${product.slug}`} key={product._id}>
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105">
                   <Image
-                    src={urlFor(product.image).url()}
+                    src={urlFor(product.imageUrl).url()}
                     alt={product.name}
                     width={300}
                     height={300}

@@ -126,12 +126,14 @@ const Navbar = () => {
         </div>
 
         <div className="flex space-x-4 mt-6">
-          <Link href="/Cart">
+          <Link href="/Cart" 
+          onClick={() => setCartOpen(!cartOpen)}>
             <button className=" p-2 border border-black rounded-full hover:bg-black hover:text-white">
               View Cart
             </button>
           </Link>
-          <Link href="/CheckOut">
+          <Link href="/CheckOut"
+          onClick={() => setCartOpen(!cartOpen)}>
             <button className=" p-2 border border-black rounded-full hover:bg-black hover:text-white">
               Checkout
             </button>
@@ -150,3 +152,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+

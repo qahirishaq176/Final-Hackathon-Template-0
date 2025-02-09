@@ -58,9 +58,9 @@ const Page = () => {
               className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
             >
               <Link href={`/Shop/${product.slug.current}`}>
-                {product.image && (
+                {product.imageUrl && (
                   <Image
-                    src={urlFor(product.image).url()}
+                    src={urlFor(product.imageUrl).url()}
                     alt={product.name}
                     width={300}
                     height={300}

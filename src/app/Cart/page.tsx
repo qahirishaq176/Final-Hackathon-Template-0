@@ -27,6 +27,7 @@ const CartPage = () => {
           width={1440}
           height={316}
           className="w-full min-h-[200px] lg:min-h-[350px] object-cover"
+          priority
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <Image
@@ -35,6 +36,7 @@ const CartPage = () => {
             width={77}
             height={77}
             className="w-[7%] md:w-[77px] md:h-[77px]"
+            priority
           />
           <p className="font-[500] text-[24px] sm:text-[36px] md:text-[48px] lg:text-[56px] leading-[36px] sm:leading-[48px] md:leading-[72px] lg:leading-[80px] text-black">
             Cart
@@ -87,6 +89,7 @@ const CartPage = () => {
                       width={100}
                       height={100}
                       className="object-contain"
+                      priority
                     />
                   </div>
 
